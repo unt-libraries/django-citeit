@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"  
+	"http://www.w3.org/TR/html4/strict.dtd"> 
+<html> 
+<head> 
+    <title>Withers Thesis Project</title> 
+    <!-- Source File --> 
+    
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/reset-fonts-grids/reset-fonts-grids.css"> 
+    <link rel="stylesheet" href="{% static 'citeIt/citeit.css' %}" type="text/css" />
+</head>
+<body id="{variable-project-name}" class="start-page">
+<div id="doc" class="yui-t7">
+<div id="hd"><h1>Withers Thesis Project</h1>
+<ul id="navigation">
+    <li><a href="">Home</a></li>
+    <li><a href="/withers/about/">About this Project</a></li>
+</ul>
+</div>
+<div id="bd">
+<div id="yui-main">
+<div class="yui-b"><div class="yui-g">
+{% if citations %}
+    <table>
+    {% for citation in citations %}
+        <tr>
+            <td width="10%">{{ citation.withers_thesis_number|stringformat:"03d" }}</td>
+            <td width="90%">{{ citation.author }}. {{ citation.full_title }} {{ citation.pagination }} pp. {{ citation.granting_institution.institution_name }}, {{ citation.degree_level }}, {{ citation.year }}. {{ citation.local_call_no }}.<br />
+            <blockquote>{{ citation.abstract }}</blockquote>
+            
+        </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No citations are available.</p>
+{% endif %}
+</div>
+</div>
+
+</div>
+</div>
+
+<div id="ft">
+</div>
+</div>
+</body>
+</head>

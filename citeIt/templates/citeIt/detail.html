@@ -1,0 +1,10 @@
+<h1>{{ citation.full_title}}</h1>
+
+Withers' Thesis Number: {{ citation.withers_thesis_number }}<br />
+Title:{{ citation.full_title }}<br />
+Pagination: {{ citation.pagination_pretty }}<br />
+
+
+<h2>Citation:</h2>
+
+<a href="/withers/author/{{ citation.author }}">{{ citation.author }}<a/>. "{{ citation.full_title }}" <a href="/withers/degree/{{ citation.degree_level }}">{{ citation.degree_level }}</a>, <a href="/withers/institution/{{ citation.granting_institution }}">{{ citation.granting_institution }}</a>, <a href="/withers/year/{{ citation.year }}">{{ citation.year }}</a>.

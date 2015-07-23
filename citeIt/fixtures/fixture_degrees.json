@@ -1,0 +1,51 @@
+[
+    {
+        "pk": 1, 
+        "model": "citeIt.degreelevel", 
+        "fields": {
+            "degree_abbreviation": "MS", 
+            "degree_name": "Master of Science"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "citeIt.degreelevel", 
+        "fields": {
+            "degree_abbreviation": "MA", 
+            "degree_name": "Master of Arts"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "citeIt.degreelevel", 
+        "fields": {
+            "degree_abbreviation": "PhD", 
+            "degree_name": "Doctor of Philosophy"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "citeIt.degreelevel", 
+        "fields": {
+            "degree_abbreviation": "MSW", 
+            "degree_name": "Master of Social Work"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "citeIt.degreelevel", 
+        "fields": {
+            "degree_abbreviation": "MeD", 
+            "degree_name": "Doctor of Medicine"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "citeIt.degreelevel", 
+        "fields": {
+            "degree_abbreviation": "EdD", 
+            "degree_name": "Doctor of Education"
+        }
+    }
+]
+

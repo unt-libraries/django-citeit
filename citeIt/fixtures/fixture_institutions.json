@@ -1,0 +1,18 @@
+[
+    {
+        "pk": 1, 
+        "model": "citeIt.institution", 
+        "fields": {
+            "institution_abbreviation": "OU", 
+            "institution_name": "Oklahoma University"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "citeIt.institution", 
+        "fields": {
+            "institution_abbreviation": "OSU", 
+            "institution_name": "Oklahoma State University"
+        }
+    }
+]

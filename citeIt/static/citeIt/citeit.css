@@ -1,0 +1,247 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* HTML Elements */
+
+optgroup {
+	font-style:normal;
+}
+
+label {
+	font-weight:bold;
+	display:block;
+	margin-top:1em;
+}
+
+
+
+h1, h2, h3 {
+	font-family:Georgia, "Times New Roman", Times, serif;
+	letter-spacing: .04em;
+	font-weight:bold;
+}
+
+p {
+	line-height:1.5em;
+	padding-bottom:1.5em;
+}
+
+label.choice {
+	color:#222222;
+	line-height:1.5em;
+	width:90%;
+	font-weight:normal;
+	margin-right:1em;
+	display:inline;
+}
+
+
+td {
+    padding:10px;
+	border: 1px solid #CCCCCC;
+    
+}
+
+
+blockquote {
+    margin-top:1em;
+    margin-left:3em;
+    margin-bottom:1.5em;
+}
+
+#search-url-value {
+	width:350px;
+	padding:3px;
+}
+
+
+input[type=text],
+select,
+textarea {
+ 	width: 350px; 
+ }
+
+
+input[type=text] {
+	padding: 3px;
+}
+
+/*  Layout */
+
+#doc {
+	border:1px solid #dbdbdb;
+	margin-top:1em;
+}
+
+
+#hd {
+	padding: 1em 25px;
+	background-color:#FFFFFF;
+	height:77px;
+}
+
+#hd h1{
+	font-size: 131%;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-weight:bold;
+	letter-spacing: .08em;
+	color: #0000FF;
+}
+
+#bd {
+	padding: 10px 25px;
+}
+
+/* Navigation */
+
+#other-projects {
+	position:relative;
+	text-align:right;
+	top:-1.5em;
+}
+
+
+#other-projects a {
+	text-decoration:none;	
+}
+
+#other-projects a:hover {
+	border-bottom: 1px solid #0000FF;
+}
+
+#navigation {
+	padding-left: 0;
+	margin:1em 0;
+	color: #000000;
+	float: left;
+	width: 100%;
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#navigation li { 
+	display: inline;
+	margin:.5em 0;
+}
+
+#navigation li a{
+	padding: .5em 1em;
+	color: #0000FF;
+	text-decoration: none;
+	float: left;
+}
+
+#navigation li a:hover
+{
+background-color: #369;
+color: #FFFFFF;
+}
+
+
+/* Headings and Body */
+
+form h2 {
+	background-color: #000066;
+	color:#FFFFFF;
+	margin:1.5em 0 0 0;
+	padding: 5px 10px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	letter-spacing: .04em;
+	border-top: 1px solid #FFFFFF;
+	border-right: 1px solid #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
+}
+
+h2.collapse-next {
+	background-image:url(../images/resizers/wrapper-open.jpg);
+	background-repeat:no-repeat;
+	background-position:99%;
+}
+
+h2.closed {
+	background-image:url(../images/resizers/wrapper-close.jpg);
+	background-repeat:no-repeat;
+	background-position:99%;
+}
+
+.edit-form .field-wrapper {
+	border-top:none;
+}
+
+form div {
+	color:#000000;
+	padding: 25px;
+	margin: 0;
+}
+
+span.required {
+	color:#FF0000;
+	font-weight:bold;
+}
+
+form div.element-wrapper {
+	margin:0;
+	padding:0;
+	border:none;
+	/*width: 350px;*/
+}
+
+
+.field-wrapper {
+	padding:0;
+	background-color: #EFEFEF;
+	border: 1px solid #CCCCCC;
+	padding:25px;
+	position:relative;
+}
+
+
+
+.edit-form .field-wrapper h3 {
+	margin-top: 1.5em;
+}
+
+
+.instruction {
+	font-size: 77%;
+	margin:0 0 1.5em 0;
+	padding:0;
+}
+
+
+.helper-function {
+	font-size:77%;
+	text-align:right;
+	position:relative;
+	top:-20px;
+	margin-bottom:-20px;	
+}
+
+form div.leading {
+	margin-top: 1.5em;
+}
+
+.prettier-button {
+	background-color:#FFFFFF;
+	border: 1px solid #999999;
+	padding:.25em .5em;
+}
+
+
+
+#ft {
+	padding:25px;
+	border-top: 1px solid #CCCCCC;
+}
+
+
+/* Pagination Stuff */
+.paginator { padding: .25em .25em .6em .25em; }
+.paginate-pages { padding: 2px 3px; border: 1px solid #ddd; cursor: pointer; text-decoration: underline; }
+.paginate-first, .paginate-last { padding: 2px 6px; border: 1px solid #ddd; font-weight: bold; }
+.paginate-previous, .paginate-next { padding: 2px 3px; border: 1px solid #ddd; }
+.paginate-link { padding: 2px 4px; border: 1px solid #ddd; }
+.paginate-current { padding: 2px 4px; border: 1px solid #ddd; font-weight: bold; background:#417690; color:#f4f379; }
+

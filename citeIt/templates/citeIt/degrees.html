@@ -1,0 +1,9 @@
+{% if degrees %}
+    <ul>
+    {% for degree in degrees %}
+        <li><a href="{{ degree.degree_level__degree_abbreviation }}">{{ degree.degree_level__degree_abbreviation }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No degrees are available.</p>
+{% endif %}
