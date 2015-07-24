@@ -1,0 +1,52 @@
+from django.core.urlresolvers import resolve
+from django.test import TestCase
+
+from citeIt import views
+
+
+class TestURLs(TestCase):
+    """Test that the URLs are matched and resolved to the correct views."""
+
+    def test_index_url(self):
+        view = resolve('/withers/').func
+        self.assertEqual(view, views.index)
+
+    def test_about_url(self):
+        view = resolve('/withers/about/').func
+        self.assertEqual(view, views.about)
+
+    def test_citation_url(self):
+        view = resolve('/withers/citation/001/').func
+        self.assertEqual(view, views.citation)
+
+    def test_author_url(self):
+        view = resolve('/withers/author/Logan, John H./').func
+        self.assertEqual(view, views.author)
+
+    def test_authors_url(self):
+        view = resolve('/withers/author/').func
+        self.assertEqual(view, views.authors)
+
+    def test_institution_url(self):
+        view = resolve('/withers/institution/UNT/').func
+        self.assertEqual(view, views.institution)
+
+    def test_degree_url(self):
+        view = resolve('/withers/degree/MA/').func
+        self.assertEqual(view, views.degree)
+
+    def test_degrees_url(self):
+        view = resolve('/withers/degree/').func
+        self.assertEqual(view, views.degrees)
+
+    def test_year_url(self):
+        view = resolve('/withers/year/1932/').func
+        self.assertEqual(view, views.year)
+
+    def test_subject_url(self):
+        view = resolve('/withers/subject/weather/').func
+        self.assertEqual(view, views.subject)
+
+    def test_location_url(self):
+        view = resolve('/withers/location/United_States/').func
+        self.assertEqual(view, views.location)
