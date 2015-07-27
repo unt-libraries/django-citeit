@@ -2,61 +2,59 @@ from unittest import expectedFailure
 
 from django.test import TestCase
 
-from citeIt.models import Institution, DegreeLevel, Citation
+from . import factories
+from citeIt.models import Institution, Subject, Location, DegreeLevel, Citation
 
 
-class TestCitationMethods(TestCase):
-    """Test that the Citation model's methods return the expected strings."""
-
-    @classmethod
-    def setUpTestData(cls):
-        """Set up a couple database entries to use in the tests."""
-        institution = Institution.objects.create(
-            institution_abbreviation='UNM',
-            institution_name='University of Northern Mars'
-        )
-
-        degree = DegreeLevel.objects.create(
-            degree_abbreviation='MM',
-            degree_name='Master Mind'
-        )
-
-        cls.with_article = Citation.objects.create(
-            withers_thesis_number=001,
-            author='Martian, Martin M',
-            initial_article='The',
-            title='Traitor',
-            pagination=42,
-            granting_institution=institution,
-            degree_level=degree,
-            year=2020,
-            local_call_no='000-000-0001',
-            abstract='No abstract.'
-        )
-
-        cls.without_article = Citation.objects.create(
-            withers_thesis_number=002,
-            author='Martian, Martin M',
-            title='Politicians',
-            pagination=24,
-            granting_institution=institution,
-            degree_level=degree,
-            year=2020,
-            local_call_no='000-000-0001',
-            abstract='No abstract.'
-        )
+class TestModelMethods(TestCase):
+    """Test that the models' methods return the expected strings."""
 
     def test_full_title_with_initial_article(self):
         """Check that the initial article gets prepended to the title."""
-        self.assertEqual(self.with_article.full_title(), 'The Traitor')
+        citation_with_article = factories.CitationFactory(
+            initial_article='The',
+            title='Traitor'
+        )
+        self.assertEqual(citation_with_article.full_title(), 'The Traitor')
 
     # This test fails because currently the model will prepend a space to the
     # full title if no initial article exists.
     @expectedFailure
     def test_full_title_without_initial_article(self):
         """Check that title with no initial article gets printed correctly."""
+        citation_without_article = factories.CitationFactory(
+            initial_article='',
+            title='Politicians'
+        )
         self.assertEqual(self.without_article.full_title(), 'Politicians')
 
     def test_pagination_pretty(self):
         """Check that the page number is correctly appended with a 'pp'."""
-        self.assertEqual(self.with_article.pagination_pretty(), '42pp')
+        citation = factories.CitationFactory(pagination='42')
+        self.assertEqual(citation.pagination_pretty(), '42pp')
+
+    def test_institution_str_repr(self):
+        """Check that the model's string representation is the abbreviation."""
+        institution = factories.InstitutionFactory(institution_abbreviation='UNT')
+        self.assertEqual(str(institution), 'UNT')
+
+    def test_degreelevel_str_repr(self):
+        """Check that the model's string representation is the abbreviation."""
+        degree_level = factories.DegreeLevelFactory(degree_abbreviation='MBA')
+        self.assertEqual(str(degree_level), 'MBA')
+
+    def test_subject_str_repr(self):
+        """Check that the model's string representation is the subject."""
+        subject = factories.SubjectFactory(subject='Alchemy')
+        self.assertEqual(str(subject), 'Alchemy')
+        
+    def test_location_str_repr(self):
+        """Check that the model's string representation is the location."""
+        location = factories.LocationFactory(location='Russia')
+        self.assertEqual(str(location), 'Russia')
+
+    def test_citation_str_repr(self):
+        """Check that the model's string representation is the title."""
+        citation = factories.CitationFactory(initial_article='The',
+                                             title='Wandering Mouse')
+        self.assertEqual(str(citation), 'Wandering Mouse')
