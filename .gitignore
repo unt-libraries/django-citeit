@@ -3,3 +3,6 @@
 *.sqlite3
 .*
 htmlcov/
+build/
+*.egg-info
+dist/

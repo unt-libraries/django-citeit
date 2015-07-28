@@ -12,6 +12,12 @@ Requirements
 * Python >= 2.7
 
 
+Additional Testing Requirements
+-------------------------------
+
+* factory-boy >= 2.5
+
+
 Installation
 ------------
 

@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='citeit',
+    name='citeIt',
     version='0.1.0',
     packages=find_packages(exclude=['tests*']),
-    description='A Django app for the creation of an annotated bibliography.'
+    description='A Django app for the creation of an annotated bibliography.',
     long_description=('Please visit https://github.com/unt-libraries/citeIt '
                       'for the latest documentation.'),
     include_package_data=True,
