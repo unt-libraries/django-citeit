@@ -36,7 +36,7 @@ class SubjectFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.Subject
 
-    subject = 'Computer Science'
+    subject = 'Texas'
 
 class CitationFactory(factory.django.DjangoModelFactory):
 
@@ -50,7 +50,7 @@ class CitationFactory(factory.django.DjangoModelFactory):
     pagination = '432'
     granting_institution = factory.SubFactory(InstitutionFactory) 
     degree_level = factory.SubFactory(DegreeLevelFactory)
-    year = '1854' 
+    year = '1984' 
     local_call_no = '9401234567'
     abstract = 'A book about something'
     subjects = factory.RelatedFactory(SubjectFactory)
