@@ -23,7 +23,7 @@ Installation
 
 1.  Download source code from Github.
     ```sh
-	$ git clone https://github.com/unt-libraries/citeIt
+	$ git clone https://github.com/unt-libraries/django-citeit
     ```
 
 2.  Navigate into citeIt/ and create tarball.

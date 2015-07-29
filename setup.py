@@ -5,10 +5,10 @@ setup(
     version='0.1.0',
     packages=find_packages(exclude=['tests*']),
     description='A Django app for the creation of an annotated bibliography.',
-    long_description=('Please visit https://github.com/unt-libraries/citeIt '
+    long_description=('Please visit https://github.com/unt-libraries/django-citeit '
                       'for the latest documentation.'),
     include_package_data=True,
-    url='https://github.com/unt-libraries/citeIt',
+    url='https://github.com/unt-libraries/django-citeit',
     author='University of North Texas Libraries',
     author_email='mark.phillips@unt.edu',
     license='BSD',
