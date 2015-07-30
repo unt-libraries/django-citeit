@@ -32,7 +32,7 @@ class TestCitationView(TestCase):
         first = factories.CitationFactory()
         second = factories.CitationFactory()
         response = self.client.get('/withers/citation/1/')
-        self.assertTrue(response.context['citation'] == first)
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['citation'], first)
 
     def test_query_no_matching_citation(self):
@@ -52,6 +52,7 @@ class TestAuthorView(TestCase):
         factories.CitationFactory.create_batch(10, author='Verne, Jules')
         factories.CitationFactory(author='Dan Longshot')
         response = self.client.get('/withers/author/Verne, Jules/')
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 10)
 
     def test_query_no_matching_author(self):
@@ -91,6 +92,7 @@ class TestInstitutionView(TestCase):
         )
 
         response = self.client.get('/withers/institution/UNT/')
+        self.assertEqual(response.status_code, 200)
         self.assertTrue(len(response.context['citations']) == 10)
 
     def test_query_no_matching_institutions(self):
@@ -116,6 +118,7 @@ class TestDegreeView(TestCase):
         )
 
         response = self.client.get('/withers/degree/MBA/')
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 10)
 
     def test_query_no_matching_degrees(self):
@@ -150,6 +153,7 @@ class TestYearView(TestCase):
         factories.CitationFactory.create_batch(10)
         factories.CitationFactory(year='2015')
         response = self.client.get('/withers/year/1984/')
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 10)
 
     def test_query_no_matching_year(self):
@@ -165,11 +169,15 @@ class TestSubjectView(TestCase):
         response = self.client.get('/withers/subject/weather/')
         self.assertTemplateUsed(response, 'citeIt/index.html')
 
-   #def test_query_matching_subjects(self):
-   #    # Create ten citations to match the query and one that doesn't.
-   #    factories.CitationFactory.create_batch(10)
-   #    response = self.client.get('/withers/subject/Texas/')
-   #    self.assertEqual(len(response.context['citations']), 10)
+    def test_query_matching_subjects(self):
+        # Create ten citations to match the query and one that doesn't.
+        subject_texas = factories.SubjectFactory(subject='Texas')
+        subject_flower = factories.SubjectFactory(subject='flowers')
+        factories.CitationFactory.create_batch(10, subjects=(subject_texas, ))
+        factories.CitationFactory(subjects=(subject_flower, ))
+        response = self.client.get('/withers/subject/Texas/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['citations']), 10)
 
     def test_query_no_matching_subjects(self):
         response = self.client.get('/withers/subject/flooping/')
@@ -184,11 +192,15 @@ class TestLocationView(TestCase):
         response = self.client.get('/withers/location/United_States/')
         self.assertTemplateUsed(response, 'citeIt/index.html')
 
-#   def test_query_matching_locations(self):
-#       # Create ten citations to match the query and one that doesn't.
-#       hold = factories.CitationFactory.create_batch(10)
-#       response = self.client.get('/withers/location/United_States/')
-#       self.assertEqual(len(response.context['citations']), 10)
+    def test_query_matching_locations(self):
+        # Create ten citations to match the query and one that doesn't.
+        location_us = factories.LocationFactory(location='United States')
+        location_mexico = factories.LocationFactory(location='Mexico')
+        factories.CitationFactory.create_batch(10, coverage=(location_us, ))
+        factories.CitationFactory(coverage=(location_mexico, ))
+        response = self.client.get('/withers/location/United_States/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['citations']), 10)
 
     def test_query_no_matching_locations(self):
         response = self.client.get('/withers/location/Untied_Spades/')

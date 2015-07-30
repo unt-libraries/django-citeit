@@ -53,7 +53,24 @@ class CitationFactory(factory.django.DjangoModelFactory):
     year = '1984' 
     local_call_no = '9401234567'
     abstract = 'A book about something'
-    subjects = factory.RelatedFactory(SubjectFactory)
     coverage = factory.RelatedFactory(LocationFactory)
     citation_added_date = datetime.now()
     citation_edited_date = datetime.now()
+
+    @factory.post_generation
+    def subjects(self, create, extracted, **kwargs):
+        if not create:
+            return
+
+        if extracted:
+            for subject in extracted:
+                self.subjects.add(subject)
+
+    @factory.post_generation
+    def coverage(self, create, extracted, **kwargs):
+        if not create:
+            return
+
+        if extracted:
+            for location in extracted:
+                self.coverage.add(location)
