@@ -1,9 +1,6 @@
-import factory
-from django.test import TestCase, RequestFactory
+from django.test import TestCase
 
 from . import factories
-from citeIt import views
-from citeIt.models import Institution, DegreeLevel, Citation
 
 
 class TestIndexView(TestCase):
@@ -19,6 +16,7 @@ class TestIndexView(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 30)
 
+
 class TestCitationView(TestCase):
     """Test that the citation view functions correctly."""
 
@@ -29,11 +27,11 @@ class TestCitationView(TestCase):
 
     def test_query_matching_citation(self):
         # Create one citation that matches the query and one that doesn't.
-        first = factories.CitationFactory()
-        second = factories.CitationFactory()
+        first_citation = factories.CitationFactory()
+        factories.CitationFactory()
         response = self.client.get('/withers/citation/1/')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context['citation'], first)
+        self.assertEqual(response.context['citation'], first_citation)
 
     def test_query_no_matching_citation(self):
         response = self.client.get('/withers/citation/2/')
@@ -98,7 +96,7 @@ class TestInstitutionView(TestCase):
     def test_query_no_matching_institutions(self):
         response = self.client.get('/withers/institution/UML/')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.context['citations']),  0)
+        self.assertEqual(len(response.context['citations']), 0)
 
 
 class TestDegreeView(TestCase):

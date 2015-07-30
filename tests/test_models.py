@@ -3,7 +3,6 @@ from unittest import expectedFailure
 from django.test import TestCase
 
 from . import factories
-from citeIt.models import Institution, Subject, Location, DegreeLevel, Citation
 
 
 class TestModelMethods(TestCase):
@@ -22,10 +21,7 @@ class TestModelMethods(TestCase):
     @expectedFailure
     def test_full_title_without_initial_article(self):
         """Check that title with no initial article gets printed correctly."""
-        citation_without_article = factories.CitationFactory(
-            initial_article='',
-            title='Politicians'
-        )
+        factories.CitationFactory(initial_article='', title='Politicians')
         self.assertEqual(self.without_article.full_title(), 'Politicians')
 
     def test_pagination_pretty(self):
@@ -35,7 +31,8 @@ class TestModelMethods(TestCase):
 
     def test_institution_str_repr(self):
         """Check that the model's string representation is the abbreviation."""
-        institution = factories.InstitutionFactory(institution_abbreviation='UNT')
+        institution = factories.InstitutionFactory(
+            institution_abbreviation='UNT')
         self.assertEqual(str(institution), 'UNT')
 
     def test_degreelevel_str_repr(self):
@@ -47,7 +44,7 @@ class TestModelMethods(TestCase):
         """Check that the model's string representation is the subject."""
         subject = factories.SubjectFactory(subject='Alchemy')
         self.assertEqual(str(subject), 'Alchemy')
-        
+
     def test_location_str_repr(self):
         """Check that the model's string representation is the location."""
         location = factories.LocationFactory(location='Russia')

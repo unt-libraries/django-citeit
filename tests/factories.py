@@ -16,6 +16,7 @@ class InstitutionFactory(factory.django.DjangoModelFactory):
     institution_abbreviation = 'UNT'
     institution_name = 'University of North Texas'
 
+
 class DegreeLevelFactory(factory.django.DjangoModelFactory):
 
     class Meta:
@@ -24,6 +25,7 @@ class DegreeLevelFactory(factory.django.DjangoModelFactory):
     degree_abbreviation = 'MBA'
     degree_name = 'Master of Business Administration'
 
+
 class LocationFactory(factory.django.DjangoModelFactory):
 
     class Meta:
@@ -31,12 +33,14 @@ class LocationFactory(factory.django.DjangoModelFactory):
 
     location = 'United States > Texas'
 
+
 class SubjectFactory(factory.django.DjangoModelFactory):
 
     class Meta:
         model = models.Subject
 
     subject = 'Texas'
+
 
 class CitationFactory(factory.django.DjangoModelFactory):
 
@@ -48,9 +52,9 @@ class CitationFactory(factory.django.DjangoModelFactory):
     initial_article = 'The'
     title = 'Island of Doctor Moreau'
     pagination = '432'
-    granting_institution = factory.SubFactory(InstitutionFactory) 
+    granting_institution = factory.SubFactory(InstitutionFactory)
     degree_level = factory.SubFactory(DegreeLevelFactory)
-    year = '1984' 
+    year = '1984'
     local_call_no = '9401234567'
     abstract = 'A book about something'
     coverage = factory.RelatedFactory(LocationFactory)
