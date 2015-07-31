@@ -1,6 +1,8 @@
 Django CiteIt
 =================
 
+[![Build Status](https://travis-ci.org/unt-libraries/django-citeit.svg?branch=master)](https://travis-ci.org/unt-libraries/django-citeit)
+
 This app displays an annotated bibliography and allows the viewer to sort by
 different criteria such as scope, author, year, etc.
 
