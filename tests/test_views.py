@@ -29,6 +29,7 @@ class TestCitationView(TestCase):
         # Create one citation that matches the query and one that doesn't.
         first_citation = factories.CitationFactory()
         factories.CitationFactory()
+
         response = self.client.get('/withers/citation/1/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['citation'], first_citation)
@@ -49,6 +50,7 @@ class TestAuthorView(TestCase):
         # Create ten citations to match the query and one that doesn't.
         factories.CitationFactory.create_batch(10, author='Verne, Jules')
         factories.CitationFactory(author='Dan Longshot')
+
         response = self.client.get('/withers/author/Verne, Jules/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 10)
@@ -150,6 +152,7 @@ class TestYearView(TestCase):
         # Create ten citations to match the query and one that doesn't.
         factories.CitationFactory.create_batch(10)
         factories.CitationFactory(year='2015')
+
         response = self.client.get('/withers/year/1984/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 10)
@@ -171,8 +174,10 @@ class TestSubjectView(TestCase):
         # Create ten citations to match the query and one that doesn't.
         subject_texas = factories.SubjectFactory(subject='Texas')
         subject_flower = factories.SubjectFactory(subject='flowers')
+
         factories.CitationFactory.create_batch(10, subjects=(subject_texas, ))
         factories.CitationFactory(subjects=(subject_flower, ))
+
         response = self.client.get('/withers/subject/Texas/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 10)
@@ -194,8 +199,10 @@ class TestLocationView(TestCase):
         # Create ten citations to match the query and one that doesn't.
         location_us = factories.LocationFactory(location='United States')
         location_mexico = factories.LocationFactory(location='Mexico')
+
         factories.CitationFactory.create_batch(10, coverage=(location_us, ))
         factories.CitationFactory(coverage=(location_mexico, ))
+
         response = self.client.get('/withers/location/United_States/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 10)
