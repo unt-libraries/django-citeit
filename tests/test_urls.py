@@ -25,7 +25,7 @@ class TestURLs(TestCase):
         view = resolve('/withers/author/Logan,_John_H./').func
         self.assertEqual(view, views.author)
 
-    # Currently the URL regex doesn't allow dashes, apostraphes, etc.
+    # Currently the URL regex doesn't allow dashes, apostrophes, etc.
     @expectedFailure
     def test_author_url_with_special_chars(self):
         view = resolve('/withers/author/Logan-Durant,_John_H./').func
@@ -61,7 +61,7 @@ class TestURLs(TestCase):
         view = resolve('/withers/subject/local_politics/').func
         self.assertEqual(view, views.subject)
 
-    # Currently the URL regex doesn't allow dashes, apostraphes, etc.
+    # Currently the URL regex doesn't allow dashes, apostrophes, etc.
     @expectedFailure
     def test_subject_url_with_special_chars(self):
         view = resolve('/withers/subject/K-12_Education/').func

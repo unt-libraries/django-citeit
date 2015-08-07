@@ -50,7 +50,8 @@ class TestAuthorView(TestCase):
 
     def test_query_matching_authors(self):
         # Create ten citations to match the query and one that doesn't.
-        factories.CitationFactory.create_batch(10, author='Verne, Jules')
+        factories.CitationFactory.create_batch(5, author='Verne, Jules')
+        factories.CitationFactory.create_batch(5, author='Verne, Jules Gabriel')
         factories.CitationFactory(author='Dan Longshot')
 
         response = self.client.get('/withers/author/Verne,_Jules/')
