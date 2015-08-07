@@ -1,7 +1,7 @@
 *.pyc
 *.swp
 *.sqlite3
-.*
+/.tox
 htmlcov/
 build/
 *.egg-info

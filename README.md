@@ -1,5 +1,7 @@
-CiteIt Django app
+Django CiteIt
 =================
+
+[![Build Status](https://travis-ci.org/unt-libraries/django-citeit.svg?branch=master)](https://travis-ci.org/unt-libraries/django-citeit)
 
 This app displays an annotated bibliography and allows the viewer to sort by
 different criteria such as scope, author, year, etc.
@@ -8,42 +10,26 @@ different criteria such as scope, author, year, etc.
 Requirements
 ------------
 
-* Django == 1.8
+* Django >= 1.8
 * Python >= 2.7
-
-
-Additional Testing Requirements
--------------------------------
-
-* factory-boy >= 2.5
 
 
 Installation
 ------------
 
-1.  Download source code from Github.
+1.  Download and install from source code.
     ```sh
-	$ git clone https://github.com/unt-libraries/django-citeit
+	$ pip install https://github.com/unt-libraries/django-citeit
     ```
 
-2.  Navigate into citeIt/ and create tarball.
-    ```sh
-	$ python setup.py sdist
-    ```	
-
-3.  Install the tarball.
-    ```sh
-	$ pip install name_of_tarball
-    ```
-
-4.  Add app to INSTALLED_APPS.
+2.  Add app to INSTALLED_APPS.
     ```python
 	INSTALLED_APPS = (
             'citeIt',
         )
     ```
 
-5.  Include the URLs.
+3.  Include the URLs.
     ```python
 	urlpatterns = [
             url(r'^admin/', include(admin.site.urls)),
@@ -52,7 +38,7 @@ Installation
         ]
     ```
 
-6.  Migrate/sync the database
+4.  Migrate/sync the database
     ```sh
 	$ python manage.py migrate
     ```

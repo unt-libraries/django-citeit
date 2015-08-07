@@ -1,9 +1,8 @@
-import factory
-from django.test import TestCase, RequestFactory
+from unittest import expectedFailure
+
+from django.test import TestCase
 
 from . import factories
-from citeIt import views
-from citeIt.models import Institution, DegreeLevel, Citation
 
 
 class TestIndexView(TestCase):
@@ -19,6 +18,7 @@ class TestIndexView(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 30)
 
+
 class TestCitationView(TestCase):
     """Test that the citation view functions correctly."""
 
@@ -29,11 +29,12 @@ class TestCitationView(TestCase):
 
     def test_query_matching_citation(self):
         # Create one citation that matches the query and one that doesn't.
-        first = factories.CitationFactory()
-        second = factories.CitationFactory()
+        first_citation = factories.CitationFactory()
+        factories.CitationFactory()
+
         response = self.client.get('/withers/citation/1/')
-        self.assertTrue(response.context['citation'] == first)
-        self.assertEqual(response.context['citation'], first)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['citation'], first_citation)
 
     def test_query_no_matching_citation(self):
         response = self.client.get('/withers/citation/2/')
@@ -44,18 +45,21 @@ class TestAuthorView(TestCase):
     """Test that the author view functions correctly."""
 
     def test_correct_template_used(self):
-        response = self.client.get('/withers/author/Some Body/')
+        response = self.client.get('/withers/author/Some_Body/')
         self.assertTemplateUsed(response, 'citeIt/index.html')
 
     def test_query_matching_authors(self):
         # Create ten citations to match the query and one that doesn't.
-        factories.CitationFactory.create_batch(10, author='Verne, Jules')
+        factories.CitationFactory.create_batch(5, author='Verne, Jules')
+        factories.CitationFactory.create_batch(5, author='Verne, Jules Gabriel')
         factories.CitationFactory(author='Dan Longshot')
-        response = self.client.get('/withers/author/Verne, Jules/')
+
+        response = self.client.get('/withers/author/Verne,_Jules/')
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 10)
 
     def test_query_no_matching_author(self):
-        response = self.client.get('/withers/author/No Body/')
+        response = self.client.get('/withers/author/No_Body/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 0)
 
@@ -91,12 +95,13 @@ class TestInstitutionView(TestCase):
         )
 
         response = self.client.get('/withers/institution/UNT/')
+        self.assertEqual(response.status_code, 200)
         self.assertTrue(len(response.context['citations']) == 10)
 
     def test_query_no_matching_institutions(self):
         response = self.client.get('/withers/institution/UML/')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.context['citations']),  0)
+        self.assertEqual(len(response.context['citations']), 0)
 
 
 class TestDegreeView(TestCase):
@@ -116,6 +121,7 @@ class TestDegreeView(TestCase):
         )
 
         response = self.client.get('/withers/degree/MBA/')
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 10)
 
     def test_query_no_matching_degrees(self):
@@ -149,7 +155,9 @@ class TestYearView(TestCase):
         # Create ten citations to match the query and one that doesn't.
         factories.CitationFactory.create_batch(10)
         factories.CitationFactory(year='2015')
+
         response = self.client.get('/withers/year/1984/')
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['citations']), 10)
 
     def test_query_no_matching_year(self):
@@ -165,11 +173,28 @@ class TestSubjectView(TestCase):
         response = self.client.get('/withers/subject/weather/')
         self.assertTemplateUsed(response, 'citeIt/index.html')
 
-   #def test_query_matching_subjects(self):
-   #    # Create ten citations to match the query and one that doesn't.
-   #    factories.CitationFactory.create_batch(10)
-   #    response = self.client.get('/withers/subject/Texas/')
-   #    self.assertEqual(len(response.context['citations']), 10)
+    # Currently a citation with multiple subjects that match will be listed
+    # multiple times. Need to add distinct() to query.
+    @expectedFailure
+    def test_query_matching_subjects(self):
+        # Create three subjects, two of which have a common prefix.
+        subject_texas_history = factories.SubjectFactory(
+            subject='Texas History')
+        subject_texas_historians = factories.SubjectFactory(
+            subject='Texas Historians')
+        subject_flowers = factories.SubjectFactory(subject='Flowers')
+
+        # Create ten citations with both similar subject, and one with the
+        # unique subject.
+        factories.CitationFactory.create_batch(
+            10,
+            subjects=(subject_texas_history, subject_texas_historians)
+        )
+        factories.CitationFactory(subjects=(subject_flowers, ))
+
+        response = self.client.get('/withers/subject/Texas_Histor/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['citations']), 10)
 
     def test_query_no_matching_subjects(self):
         response = self.client.get('/withers/subject/flooping/')
@@ -184,11 +209,28 @@ class TestLocationView(TestCase):
         response = self.client.get('/withers/location/United_States/')
         self.assertTemplateUsed(response, 'citeIt/index.html')
 
-#   def test_query_matching_locations(self):
-#       # Create ten citations to match the query and one that doesn't.
-#       hold = factories.CitationFactory.create_batch(10)
-#       response = self.client.get('/withers/location/United_States/')
-#       self.assertEqual(len(response.context['citations']), 10)
+    # Currently a citation with multiple locations that match will be listed
+    # multiple times. Need to add distinct() to query.
+    @expectedFailure
+    def test_query_matching_locations(self):
+        # Create three locations, two of which have a common prefix.
+        location_south_africa = factories.LocationFactory(
+            location='South Africa')
+        location_south_korea = factories.LocationFactory(
+            location='South Korea')
+        location_mexico = factories.LocationFactory(location='Mexico')
+
+        # Create ten citations with the two similar locations, and one with
+        # the unique location.
+        factories.CitationFactory.create_batch(
+            10,
+            coverage=(location_south_africa, location_south_korea)
+        )
+        factories.CitationFactory(coverage=(location_mexico, ))
+
+        response = self.client.get('/withers/location/South_/')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['citations']), 10)
 
     def test_query_no_matching_locations(self):
         response = self.client.get('/withers/location/Untied_Spades/')
