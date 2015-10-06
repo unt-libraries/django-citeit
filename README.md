@@ -48,3 +48,10 @@ License
 -------
 
 See LICENSE
+
+
+Contributors
+------------
+
+* [Mark Phillips](https://github.com/vphill)
+* [Gio Gottardi](https://github.com/somexpert)
