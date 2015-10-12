@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from citeIt.site_views import main_admin
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(main_admin.urls)),
     url(r'^withers/', include('citeIt.urls', namespace='citeIt')),
 ]
