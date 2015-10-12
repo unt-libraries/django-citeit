@@ -31,10 +31,11 @@ Installation
 
 3.  Include the URLs.
     ```python
+    from citeIt.site_views import main_admin
+
 	urlpatterns = [
-            url(r'^admin/', include(admin.site.urls)),
-            url(r'^withers/', include('citeIt.urls',
-                namespace='citeIt'))
+            url(r'^admin/', include(main_admin.urls)),
+            url(r'^withers/', include('citeIt.urls', namespace='citeIt'))
         ]
     ```
 
