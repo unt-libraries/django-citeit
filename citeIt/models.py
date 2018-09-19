@@ -1,38 +1,43 @@
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 
+@python_2_unicode_compatible
 class Institution(models.Model):
     institution_abbreviation = models.CharField(max_length=30)
     institution_name = models.CharField(max_length=200)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.institution_abbreviation
 
     class Meta:
         ordering = ['institution_abbreviation']
 
 
+@python_2_unicode_compatible
 class DegreeLevel(models.Model):
     degree_abbreviation = models.CharField(max_length=10)
     degree_name = models.CharField(max_length=100)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.degree_abbreviation
 
     class Meta:
         ordering = ['degree_abbreviation']
 
 
+@python_2_unicode_compatible
 class Subject(models.Model):
     subject = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.subject
 
     class Meta:
         ordering = ['subject']
 
 
+@python_2_unicode_compatible
 class Location(models.Model):
     location = models.CharField(
         max_length=255,
@@ -42,13 +47,14 @@ class Location(models.Model):
         ),
     )
 
-    def __unicode__(self):
+    def __str__(self):
         return self.location
 
     class Meta:
         ordering = ['location']
 
 
+@python_2_unicode_compatible
 class Citation(models.Model):
     withers_thesis_number = models.IntegerField(
         "Withers' Thesis Number",
@@ -74,10 +80,12 @@ class Citation(models.Model):
     )
     granting_institution = models.ForeignKey(
         Institution,
+        on_delete=models.CASCADE,
         help_text="Institution awarding Degree",
     )
     degree_level = models.ForeignKey(
         DegreeLevel,
+        on_delete=models.CASCADE,
         help_text="Type of degree",
     )
     year = models.IntegerField(
@@ -94,7 +102,7 @@ class Citation(models.Model):
     citation_added_date = models.DateField(auto_now_add=True)
     citation_edited_date = models.DateField(auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def full_title(self):

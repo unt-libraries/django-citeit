@@ -4,6 +4,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'dej2$7d5)ogi&lk-pn3p91vc2e9*3d@4g)zi_@=e=b-@7b9m4-'
 
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+]
+
 DEBUG = True
 
 INSTALLED_APPS = (
@@ -16,16 +21,15 @@ INSTALLED_APPS = (
     'citeIt',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-)
+]
 
 ROOT_URLCONF = 'tests.urls'
 

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-citeit',
-    version='1.0.0',
+    version='2.0.0',
     packages=find_packages(exclude=['tests*']),
     description='A Django app for the creation of an annotated bibliography.',
     long_description=('Visit https://github.com/unt-libraries/django-citeit '
@@ -16,10 +16,15 @@ setup(
     classifiers=[
         'Natural Language :: English',
         'Environment :: Web Environment',
-        'Framework :: Django :: 1.8',
-        'Framework :: Django :: 1.9',
+        'Framework :: Django :: 1.10',
+        'Framework :: Django :: 1.11',
+        'Framework :: Django :: 2.0',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7'
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4'
+        'Programming Language :: Python :: 3.5'
+        'Programming Language :: Python :: 3.6'
     ]
 )

@@ -3,9 +3,19 @@ sudo: false
 python:
     - 2.7
 env:
-    - DJANGO=1.8
-    - DJANGO=1.9
+    matrix:
+        - TOX_ENV=py27-django110
+        - TOX_ENV=py27-django111
+        - TOX_ENV=py34-django110
+        - TOX_ENV=py34-django111
+        - TOX_ENV=py34-django20
+        - TOX_ENV=py35-django110
+        - TOX_ENV=py35-django111
+        - TOX_ENV=py35-django20
+        - TOX_ENV=py36-django110
+        - TOX_ENV=py36-django111
+        - TOX_ENV=py36-django20
 install:
     - pip install tox-travis
 script:
-    - tox
+    - tox -e $TOX_ENV

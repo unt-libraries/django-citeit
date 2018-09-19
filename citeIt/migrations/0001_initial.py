@@ -76,12 +76,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='citation',
             name='degree_level',
-            field=models.ForeignKey(help_text=b'Type of degree', to='citeIt.DegreeLevel'),
+            field=models.ForeignKey(on_delete=models.CASCADE, help_text=b'Type of degree', to='citeIt.DegreeLevel'),
         ),
         migrations.AddField(
             model_name='citation',
             name='granting_institution',
-            field=models.ForeignKey(help_text=b'Institution awarding Degree', to='citeIt.Institution'),
+            field=models.ForeignKey(on_delete=models.CASCADE, help_text=b'Institution awarding Degree', to='citeIt.Institution'),
         ),
         migrations.AddField(
             model_name='citation',
