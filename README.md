@@ -10,8 +10,8 @@ different criteria such as scope, author, year, etc.
 Requirements
 ------------
 
-* Django 1.8 - 1.9
-* Python == 2.7
+* Django 1.10 - 2.0
+* Python 2.7, 3.4 - 3.6
 
 
 Installation
@@ -32,9 +32,8 @@ Installation
 3.  Include the URLs.
     ```python
 	urlpatterns = [
-            url(r'^admin/', include(admin.site.urls)),
-            url(r'^withers/', include('citeIt.urls',
-                namespace='citeIt'))
+            url(r'^admin/', admin.site.urls),
+            url(r'^withers/', include('citeIt.urls'))
         ]
     ```
 
