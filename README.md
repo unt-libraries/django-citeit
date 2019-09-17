@@ -10,7 +10,7 @@ different criteria such as scope, author, year, etc.
 Requirements
 ------------
 
-* Django 1.11,2.0
+* Django 1.11, 2.0
 * Python 2.7, 3.5- 3.7
 
 
@@ -24,7 +24,7 @@ Installation
 
 2.  Add app to INSTALLED_APPS.
     ```python
-	   INSTALLED_APPS = (   
+	   INSTALLED_APPS = (
             'citeIt',
        )
     ```
