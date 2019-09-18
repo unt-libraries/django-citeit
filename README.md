@@ -10,8 +10,8 @@ different criteria such as scope, author, year, etc.
 Requirements
 ------------
 
-* Django 1.10 - 2.0
-* Python 2.7, 3.4 - 3.6
+* Django 1.11, 2.0
+* Python 2.7, 3.5- 3.7
 
 
 Installation

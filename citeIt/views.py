@@ -31,12 +31,14 @@ def institution(request, institution):
 
 
 def degree(request, degree):
-    citations = Citation.objects.filter(degree_level__degree_abbreviation__exact=degree)
+    citations = Citation.objects.filter(
+        degree_level__degree_abbreviation__exact=degree)
     return render(request, 'citeIt/index.html', {'citations': citations})
 
 
 def degrees(request):
-    degrees = Citation.objects.all().values('degree_level__degree_abbreviation').distinct()
+    degrees = Citation.objects.all().values(
+        'degree_level__degree_abbreviation').distinct()
     return render(request, 'citeIt/degrees.html', {'degrees': degrees})
 
 
@@ -53,7 +55,8 @@ def subject(request, subject):
 
 def location(request, location):
     location = location.replace("_", " ")
-    citations = Citation.objects.filter(coverage__location__startswith=location)
+    citations = Citation.objects.filter(
+        coverage__location__startswith=location)
     return render(request, 'citeIt/index.html', {'citations': citations})
 
 
