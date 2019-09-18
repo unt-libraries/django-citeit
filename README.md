@@ -19,19 +19,19 @@ Installation
 
 1.  Download and install from source code.
     ```sh
-	$  pip install git+git://github.com/unt-libraries/django-citeit.git
+	$ pip install git+git://github.com/unt-libraries/django-citeit.git
     ```
 
 2.  Add app to INSTALLED_APPS.
     ```python
-	   INSTALLED_APPS = (
+	INSTALLED_APPS = (
             'citeIt',
-       )
+        )
     ```
 
 3.  Include the URLs.
     ```python
-	    urlpatterns = [
+	urlpatterns = [
             url(r'^admin/', admin.site.urls),
             url(r'^withers/', include('citeIt.urls'))
         ]
@@ -39,7 +39,7 @@ Installation
 
 4.  Migrate/sync the database
     ```sh
-	$  python manage.py migrate
+	$ python manage.py migrate
     ```
 
 
