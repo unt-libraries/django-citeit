@@ -66,7 +66,7 @@ Developing
        $ ./manage.py migrate
    ```
 
-5. Create a superuser so you can log into the admin interface and add/remove/modify subjects:
+5. Create a superuser so you can log into the admin interface   
    ```sh
        $ ./manage.py createsuperuser
    ```
@@ -82,7 +82,7 @@ Developing
 Testing
 -------
 
-1. Run the tests using tox.
+1. Run the tests using tox
    ```sh
        $ pip install tox
 
