@@ -11,7 +11,7 @@ Requirements
 ------------
 
 * Django 2.2
-* Python 3.5- 3.7
+* Python 3.5 - 3.7
 
 
 Installation
@@ -61,7 +61,7 @@ Developing
        $ pip install -r requirements-dev.txt
    ```
 
-4. Navigate to the root of the project directory and run the migrations:
+4. Run the migrations:
    ```sh
        $ ./manage.py migrate
    ```
