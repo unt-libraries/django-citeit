@@ -7,7 +7,9 @@ Change Log
 
 * Upgraded to Django 2.2
 * Dropped support for Django 1.11, 2.0
-* Dropped support for Python 2.7
+* Dropped support for Python 2.7 and 3.5
+* Replaced Travis with Github Actions.
+* Added Python 3.8 and 3.9 to testing.
 
 
 2.0.0
