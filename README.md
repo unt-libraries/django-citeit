@@ -1,7 +1,7 @@
 Django CiteIt
 =================
 
-[![Build Status](https://travis-ci.org/unt-libraries/django-citeit.svg?branch=master)](https://travis-ci.org/unt-libraries/django-citeit)
+[![Build Status](https://github.com/unt-libraries/django-citeit/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/unt-libraries/django-citeit/actions)
 
 This app displays an annotated bibliography and allows the viewer to sort by
 different criteria such as scope, author, year, etc.
@@ -11,7 +11,7 @@ Requirements
 ------------
 
 * Django 2.2
-* Python 3.5 - 3.7
+* Python 3.6 - 3.7
 
 
 Installation
