@@ -1,8 +1,6 @@
 from django.db import models
-from six import python_2_unicode_compatible
 
 
-@python_2_unicode_compatible
 class Institution(models.Model):
     institution_abbreviation = models.CharField(max_length=30)
     institution_name = models.CharField(max_length=200)
@@ -14,7 +12,6 @@ class Institution(models.Model):
         ordering = ['institution_abbreviation']
 
 
-@python_2_unicode_compatible
 class DegreeLevel(models.Model):
     degree_abbreviation = models.CharField(max_length=10)
     degree_name = models.CharField(max_length=100)
@@ -26,7 +23,6 @@ class DegreeLevel(models.Model):
         ordering = ['degree_abbreviation']
 
 
-@python_2_unicode_compatible
 class Subject(models.Model):
     subject = models.CharField(max_length=255)
 
@@ -37,7 +33,6 @@ class Subject(models.Model):
         ordering = ['subject']
 
 
-@python_2_unicode_compatible
 class Location(models.Model):
     location = models.CharField(
         max_length=255,
@@ -54,7 +49,6 @@ class Location(models.Model):
         ordering = ['location']
 
 
-@python_2_unicode_compatible
 class Citation(models.Model):
     withers_thesis_number = models.IntegerField(
         "Withers' Thesis Number",
