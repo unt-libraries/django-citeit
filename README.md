@@ -11,7 +11,7 @@ Requirements
 ------------
 
 * Django 4.1
-* Python 3.8 - 3.9
+* Python 3.8 - 3.10
 
 
 Installation
