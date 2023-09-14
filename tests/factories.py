@@ -71,7 +71,7 @@ class CitationFactory(factory.django.DjangoModelFactory):
                 self.subjects.add(subject)
 
     @factory.post_generation
-    def coverage(self, create, extracted, **kwargs):
+    def coverage_locs(self, create, extracted, **kwargs):
         if not create:
             return
 
