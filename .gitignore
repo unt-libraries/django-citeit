@@ -6,3 +6,4 @@ htmlcov/
 build/
 *.egg-info
 dist/
+.python-version
