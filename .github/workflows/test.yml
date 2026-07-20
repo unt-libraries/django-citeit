@@ -6,6 +6,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.12', '3.13', '3.14']
 
     steps:
       - uses: actions/checkout@v3
@@ -13,13 +16,17 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.14'
+          python-version: ${{ matrix.python }}
 
-      - name: Install tox
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install tox
-          
+          pip install .'[dev,test]'
+
       - name: Run all tests
         run: |
-          tox
+          pytest
+
+      - name: Run all ruff linter
+        run: |
+          ruff check citeIt/ tests/
