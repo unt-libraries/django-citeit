@@ -22,15 +22,15 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
 ]
+dependencies = [
+    "Django @ git+https://github.com/django/django.git@stable/6.1.x", 
+]
 
 [project.urls]
 Homepage = "https://github.com/unt-libraries/django-citeit"
 Repository = "https://github.com/unt-libraries/django-citeit.git"
 
 [project.optional-dependencies]
-dev = [
-    "Django @ git+https://github.com/django/django.git@stable/6.1.x",
-]
 test = [
     "pytest~=8.4.0",
     "pytest-django~=4.5.2",
@@ -67,7 +67,6 @@ legacy_tox_ini = """
     [testenv]
     extras =
         test
-        dev
     commands = 
         pytest
     allowlist_externals = pytest

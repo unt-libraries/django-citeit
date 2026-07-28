@@ -4,10 +4,12 @@ Change Log
 6.0.0
 -----
 
+* Removed support for Python 3.8 - 3.10.
 * Added support for Python 3.12 - 3.14.
-* Upgraded to Django 6.1
-* Adjusted filter behavior for the location and subject views to only return distinct values.
-* Updated Github Actions to include newly supported Python versions. 
+* Removed support for Django 4.2.
+* Added support for Django 6.1.
+* Adjusted filter behavior for the location and subject views to only return distinct citations.
+* Fixed an issue where a citation with no initial article was being returned with a leading space.
 
 
 5.0.0
