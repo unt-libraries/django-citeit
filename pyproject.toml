@@ -41,7 +41,7 @@ test = [
 
 [tool.ruff]
 line-length = 99
-target-version = "py39"
+target-version = "py314"
 extend-exclude = ['migrations']
 
 [tool.ruff.format]
@@ -58,7 +58,7 @@ addopts = ["--nomigrations", "--create-db"]
 legacy_tox_ini = """
     [tox]
     envlist =
-        py{312,313,314}-django60
+        py{312,313,314}
         ruff
 
     [pytest]
@@ -73,9 +73,9 @@ legacy_tox_ini = """
     allowlist_externals = pytest
 
     [testenv:ruff]
-    basepython = python3.12
+    basepython = python3.14
     deps =
         ruff
     commands =
-        ruff check citeIt/ tests/
+        ruff check
 """

@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+6.0.0
+-----
+
+* Added support for Python 3.12 - 3.14.
+* Upgraded to Django 6.1
+* Adjusted filter behavior for the location and subject views to only return distinct values.
+* Updated Github Actions to include newly supported Python versions. 
+
 
 5.0.0
 -----

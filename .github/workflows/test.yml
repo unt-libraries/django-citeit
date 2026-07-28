@@ -27,6 +27,6 @@ jobs:
         run: |
           pytest
 
-      - name: Run all ruff linter
+      - name: Run ruff linter
         run: |
-          ruff check citeIt/ tests/
+          ruff check
