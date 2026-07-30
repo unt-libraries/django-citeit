@@ -10,8 +10,8 @@ different criteria such as scope, author, year, etc.
 Requirements
 ------------
 
-* Django 4.2
-* Python 3.8 - 3.10
+* Django 6.1+
+* Python 3.12 - 3.14
 
 
 Installation
@@ -58,7 +58,7 @@ Developing
 
 3. Install the requirements (preferably in a virtual environment):
    ```sh
-       $ pip install -r requirements-dev.txt
+       $ pip install .'[test]'
    ```
 
 4. Run the migrations:
@@ -85,7 +85,6 @@ Testing
 1. Run the tests using tox
    ```sh
        $ pip install tox
-
        $ tox
    ```
 
