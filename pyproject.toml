@@ -32,7 +32,7 @@ Repository = "https://github.com/unt-libraries/django-citeit.git"
 
 [project.optional-dependencies]
 test = [
-    "pytest~=8.4.0",
+    "pytest~=9.0.3",
     "pytest-django~=4.5.2",
     "factory_boy>=3.0",
     "ruff~=0.15.9",

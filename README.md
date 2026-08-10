@@ -58,7 +58,7 @@ Developing
 
 3. Install the requirements (preferably in a virtual environment):
    ```sh
-       $ pip install .'[test]'
+       $ pip install .
    ```
 
 4. Run the migrations:
