@@ -76,15 +76,15 @@ Developing
        $ ./manage.py runserver
    ```
 
-   The test server can be viewed from a browser by navigating to the default location: `http://localhost:8000/withers`
+   The test server can be viewed from a browser by navigating to the default location: `http://localhost:8000/withers/`
 
 
 Testing
 -------
 
-1. Run the tests using tox
+1. Run the tests and linter using tox
    ```sh
-       $ pip install tox
+       $ pip install .'[test]'
        $ tox
    ```
 
