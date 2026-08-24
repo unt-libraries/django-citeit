@@ -100,7 +100,7 @@ class Citation(models.Model):
         return self.title
 
     def full_title(self):
-        return "%s %s" % (self.initial_article, self.title)
+        return f"{self.initial_article} {self.title}".strip()
 
     def pagination_pretty(self):
-        return "%spp" % self.pagination
+        return f"{self.pagination}pp"

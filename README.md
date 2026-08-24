@@ -10,8 +10,8 @@ different criteria such as scope, author, year, etc.
 Requirements
 ------------
 
-* Django 4.2
-* Python 3.8 - 3.10
+* Django 6.1.x
+* Python 3.12 - 3.14
 
 
 Installation
@@ -58,7 +58,7 @@ Developing
 
 3. Install the requirements (preferably in a virtual environment):
    ```sh
-       $ pip install -r requirements-dev.txt
+       $ pip install .
    ```
 
 4. Run the migrations:
@@ -76,16 +76,15 @@ Developing
        $ ./manage.py runserver
    ```
 
-   The test server can be viewed from a browser by navigating to the default location: `http://localhost:8000/withers`
+   The test server can be viewed from a browser by navigating to the default location: `http://localhost:8000/withers/`
 
 
 Testing
 -------
 
-1. Run the tests using tox
+1. Install tox to run the tests and linter
    ```sh
        $ pip install tox
-
        $ tox
    ```
 

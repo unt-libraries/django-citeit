@@ -49,14 +49,14 @@ def year(request, year):
 
 def subject(request, subject):
     subject = subject.replace("_", " ")
-    citations = Citation.objects.filter(subjects__subject__startswith=subject)
+    citations = Citation.objects.filter(subjects__subject__startswith=subject).distinct()
     return render(request, 'citeIt/index.html', {'citations': citations})
 
 
 def location(request, location):
     location = location.replace("_", " ")
     citations = Citation.objects.filter(
-        coverage__location__startswith=location)
+        coverage__location__startswith=location).distinct()
     return render(request, 'citeIt/index.html', {'citations': citations})
 
 

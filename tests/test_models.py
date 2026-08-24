@@ -1,5 +1,3 @@
-from unittest import expectedFailure
-
 from django.test import TestCase
 
 from citeIt.models import Institution, DegreeLevel, Subject, Location, Citation
@@ -39,13 +37,10 @@ class TestModelMethods(TestCase):
         self.assertEqual(self.citation_with_article.full_title(),
                          'The Traitor')
 
-    # This test fails because currently the model will prepend a space to the
-    # full title if no initial article exists.
-    @expectedFailure
     def test_full_title_without_initial_article(self):
         """Check that title with no initial article gets printed correctly."""
         self.assertEqual(self.citation_without_article.full_title(),
-                         'Politicians')
+                         'Mathematics: From the Birth of Numbers')
 
     def test_pagination_pretty(self):
         """Check that the page number is correctly appended with a 'pp'."""

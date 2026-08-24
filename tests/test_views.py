@@ -1,5 +1,3 @@
-from unittest import expectedFailure
-
 from django.test import TestCase
 
 from . import factories
@@ -173,9 +171,6 @@ class TestSubjectView(TestCase):
         response = self.client.get('/withers/subject/weather/')
         self.assertTemplateUsed(response, 'citeIt/index.html')
 
-    # Currently a citation with multiple subjects that match will be listed
-    # multiple times. Need to add distinct() to query.
-    @expectedFailure
     def test_query_matching_subjects(self):
         # Create three subjects, two of which have a common prefix.
         subject_texas_history = factories.SubjectFactory(
@@ -209,9 +204,6 @@ class TestLocationView(TestCase):
         response = self.client.get('/withers/location/United_States/')
         self.assertTemplateUsed(response, 'citeIt/index.html')
 
-    # Currently a citation with multiple locations that match will be listed
-    # multiple times. Need to add distinct() to query.
-    @expectedFailure
     def test_query_matching_locations(self):
         # Create three locations, two of which have a common prefix.
         location_south_africa = factories.LocationFactory(
@@ -224,9 +216,9 @@ class TestLocationView(TestCase):
         # the unique location.
         factories.CitationFactory.create_batch(
             10,
-            coverage=(location_south_africa, location_south_korea)
+            coverage_locs=(location_south_africa, location_south_korea)
         )
-        factories.CitationFactory(coverage=(location_mexico, ))
+        factories.CitationFactory(coverage_locs=(location_mexico, ))
 
         response = self.client.get('/withers/location/South_/')
         self.assertEqual(response.status_code, 200)
@@ -235,6 +227,7 @@ class TestLocationView(TestCase):
     def test_query_no_matching_locations(self):
         response = self.client.get('/withers/location/Untied_Spades/')
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['citations']), 0)
 
 
 class TestAboutView(TestCase):
