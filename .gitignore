@@ -7,3 +7,5 @@ build/
 *.egg-info
 dist/
 .python-version
+env/
+__pycache__/

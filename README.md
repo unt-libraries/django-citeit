@@ -10,7 +10,7 @@ different criteria such as scope, author, year, etc.
 Requirements
 ------------
 
-* Django 6.1+
+* Django 6.1.x
 * Python 3.12 - 3.14
 
 
@@ -82,9 +82,9 @@ Developing
 Testing
 -------
 
-1. Run the tests and linter using tox
+1. Install tox to run the tests and linter
    ```sh
-       $ pip install .'[test]'
+       $ pip install tox
        $ tox
    ```
 

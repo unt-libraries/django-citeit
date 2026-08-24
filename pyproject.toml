@@ -23,7 +23,7 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
-    "Django @ git+https://github.com/django/django.git@stable/6.1.x", 
+    "Django~=6.1", 
 ]
 
 [project.urls]
@@ -36,7 +36,6 @@ test = [
     "pytest-django~=4.5.2",
     "factory_boy>=3.0",
     "ruff~=0.15.9",
-    "tox==4.28.1",
 ]
 
 [tool.ruff]
@@ -69,10 +68,8 @@ legacy_tox_ini = """
         test
     commands = 
         pytest
-    allowlist_externals = pytest
 
     [testenv:ruff]
-    basepython = python3.14
     deps =
         ruff
     commands =
